@@ -1,0 +1,26 @@
+title = "Quest"
+
+[tool.black]
+exclude = '''
+(
+  \.git
+  |\.idea
+  |env
+)
+'''
+line-length = 100
+verbose = false
+
+[tool.isort]
+skip_glob = [
+    "env/*",
+]
+profile = "black"
+
+[tool.autoflake]
+remove-all-unused-imports = true
+recursive = true
+exclude = "env,settings"
+quiet = true
+ignore-init-module-imports = true
+in-place = true
