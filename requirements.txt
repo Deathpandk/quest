@@ -1,9 +1,11 @@
 # Core
 Django>=6,<7
 djangorestframework>=3,<4
+rest_framework_simplejwt<1
+coverage>7,<8
 
 # Linter
 black>=26,<27
 isort>=8,<9
 autoflake>2,<3
-pre-commit
+pre-commit<4
