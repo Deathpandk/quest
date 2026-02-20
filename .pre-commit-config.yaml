@@ -22,3 +22,4 @@ repos:
     rev: v2.3.3
     hooks:
     -   id: autoflake
+        exclude: ^(app/|settings/|)
