@@ -6,3 +6,4 @@ djangorestframework>=3,<4
 black>=26,<27
 isort>=8,<9
 autoflake>2,<3
+pre-commit
