@@ -22,7 +22,7 @@ profile = "black"
 [tool.autoflake]
 remove-all-unused-imports = true
 recursive = true
-exclude = "env,settings,htmlcov"
+exclude = "env,settings/,htmlcov"
 quiet = true
 ignore-init-module-imports = true
 in-place = true

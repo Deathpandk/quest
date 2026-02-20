@@ -6,8 +6,8 @@ environ.Env.read_env()
 env = env("ENV")
 
 if env == "local":
-    pass
+    from .local import *
 if env == "prod":
-    pass
+    from .prod import *
 if env == "test":
-    pass
+    from .base import *
