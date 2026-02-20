@@ -3,6 +3,7 @@ Django>=6,<7
 djangorestframework>=3,<4
 rest_framework_simplejwt<1
 coverage>7,<8
+django-environ<1
 
 # Linter
 black>=26,<27
