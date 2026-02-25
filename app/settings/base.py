@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     "apps.users",
     "apps.inventory",
     "apps.products",
+    "apps.tcg",
 ]
 
 AUTH_USER_MODEL = "users.User"
