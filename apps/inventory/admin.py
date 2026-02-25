@@ -10,4 +10,4 @@ class Admin(admin.ModelAdmin):
 
 @admin.register(InventoryChange)
 class Admin(admin.ModelAdmin):
-    list_display = ["product", "type_of", "change"]
+    list_display = ["product", "change"]

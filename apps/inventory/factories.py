@@ -8,4 +8,4 @@ class InventoryFactory(factory.django.DjangoModelFactory):
         model = "inventory.Inventory"
 
     product = factory.SubFactory(ProductFactory)
-    quantity = 3
+    quantity = 0

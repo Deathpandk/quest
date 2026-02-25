@@ -2,8 +2,6 @@ from django.db import models
 
 from app.models import TimeStampedModel, UUIDModel
 
-from .catalogues import InventoryChangeTypeChoices
-
 
 class Inventory(UUIDModel, TimeStampedModel):
     product = models.OneToOneField("products.Product", on_delete=models.CASCADE)
@@ -12,6 +10,8 @@ class Inventory(UUIDModel, TimeStampedModel):
 
 class InventoryChange(UUIDModel, TimeStampedModel):
     product = models.ForeignKey("products.Product", on_delete=models.CASCADE)
-    Type_of = InventoryChangeTypeChoices
-    type_of = models.IntegerField(choices=Type_of)
     change = models.IntegerField()
+
+    def apply(self):
+        self.product.inventory.quantity += self.change
+        return self.product.inventory
