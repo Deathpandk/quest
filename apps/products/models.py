@@ -12,3 +12,6 @@ class Variation(NameModel, UUIDModel, TimeStampedModel):
         "products.Product", on_delete=models.CASCADE, related_name="variations"
     )
     name = models.CharField(max_length=128)
+
+    def __str__(self):
+        return f"{self.product.name} - {self.name}"

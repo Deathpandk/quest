@@ -10,7 +10,7 @@ from apps.products.serializers import ProductInventorySerializer
 
 
 class InventoryViewSet(GenericViewSet, ListModelMixin):
-    queryset = Product.objects.all()
+    queryset = Product.objects.filter(variations__inventory__isnull=False)
     serializer_class = ProductInventorySerializer
 
     @action(methods=["post"], detail=False, url_path="change")
