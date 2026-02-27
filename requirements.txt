@@ -4,6 +4,7 @@ djangorestframework>=3,<4
 django-environ<1
 djangorestframework-simplejwt<6
 pydantic<3
+django-filter<26
 
 # Linter
 black>=26,<27

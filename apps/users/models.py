@@ -2,7 +2,7 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.db import models
 from django.utils import timezone
 
-from app.models import UUIDModel
+from app.utils.models import UUIDModel
 
 from .managers import UserManager
 

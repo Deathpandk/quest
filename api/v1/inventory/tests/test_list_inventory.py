@@ -1,4 +1,4 @@
-from app.auth_token_testing import AuthTokenTesting
+from app.utils.auth_token_testing import AuthTokenTesting
 from apps.inventory.factories import InventoryFactory
 from apps.products.factories import VariationFactory
 
@@ -14,4 +14,4 @@ class TestListInventory(AuthTokenTesting):
     def test_list_inventory(self):
         response = self.list_inventory()
 
-        self.assertEqual(len(response), 1)
+        self.assertEqual(len(response.get("results")), 1)

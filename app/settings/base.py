@@ -22,6 +22,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django_filters",
     "apps.users",
     "apps.inventory",
     "apps.products",
@@ -103,5 +104,9 @@ USE_TZ = True
 
 
 REST_FRAMEWORK = {
-    "EXCEPTION_HANDLER": "app.exception_handler.handler",
+    "EXCEPTION_HANDLER": "utils.exception_handler.handler",
+    "DEFAULT_FILTER_BACKENDS": [
+        "django_filters.rest_framework.DjangoFilterBackend",
+        "rest_framework.filters.SearchFilter",
+    ],
 }

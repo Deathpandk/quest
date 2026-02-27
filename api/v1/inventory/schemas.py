@@ -1,4 +1,4 @@
-from app.schemas import BaseSchema
+from app.utils.schemas import BaseSchema
 
 
 class CreateInventoryChangeRequest(BaseSchema):

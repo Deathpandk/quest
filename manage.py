@@ -1,7 +1,7 @@
 import os
 import sys
 
-from app.coverage_wrapper import TestEnv
+from app.utils.coverage_wrapper import TestEnv
 
 
 def main():

@@ -1,6 +1,6 @@
 from django.db import models
 
-from app.models import TimeStampedModel, UUIDModel
+from app.utils.models import TimeStampedModel, UUIDModel
 
 
 class Inventory(UUIDModel, TimeStampedModel):

@@ -1,4 +1,4 @@
-from app.auth_token_testing import AuthTokenTesting
+from app.utils.auth_token_testing import AuthTokenTesting
 from apps.inventory.factories import InventoryFactory
 
 

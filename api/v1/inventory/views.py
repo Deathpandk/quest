@@ -4,6 +4,7 @@ from rest_framework.mixins import ListModelMixin
 from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
 
+from app.utils.pagination import DefaultPagination
 from apps.inventory.models import Inventory, InventoryChange
 from apps.products.models import Product
 from apps.products.serializers import ProductInventorySerializer
@@ -12,8 +13,12 @@ from .schemas import CreateInventoryChangeRequest
 
 
 class InventoryViewSet(GenericViewSet, ListModelMixin):
-    queryset = Product.objects.filter(variations__inventory__isnull=False)
+    pagination_class = DefaultPagination
+    queryset = Product.objects.filter(variations__inventory__isnull=False).prefetch_related(
+        "variations", "variations__inventory"
+    )
     serializer_class = ProductInventorySerializer
+    search_fields = ["name"]
 
     @action(methods=["post"], detail=False, url_path="change")
     def create_inventory_change(self, request):

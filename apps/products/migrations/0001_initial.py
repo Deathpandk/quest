@@ -5,7 +5,7 @@ import uuid
 import django.db.models.deletion
 from django.db import migrations, models
 
-import app.models
+import app.utils.models
 
 
 class Migration(migrations.Migration):
@@ -31,7 +31,7 @@ class Migration(migrations.Migration):
             options={
                 "abstract": False,
             },
-            bases=(app.models.NameModel, models.Model),
+            bases=(app.utils.models.NameModel, models.Model),
         ),
         migrations.CreateModel(
             name="Variation",
@@ -57,6 +57,6 @@ class Migration(migrations.Migration):
             options={
                 "abstract": False,
             },
-            bases=(app.models.NameModel, models.Model),
+            bases=(app.utils.models.NameModel, models.Model),
         ),
     ]
