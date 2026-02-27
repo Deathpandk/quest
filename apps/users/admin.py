@@ -27,14 +27,14 @@ class CustomUserAdmin(UserAdmin):
     """
 
     form = CustomUserChangeForm
-    readonly_fields = ("uuid", "date_joined", "last_login")
+    readonly_fields = ("id", "date_joined", "last_login")
     fieldsets = (
         ("Login", {"fields": ("email", "password")}),
         (
             "Data",
             {
                 "fields": (
-                    "uuid",
+                    "id",
                     "name",
                 )
             },

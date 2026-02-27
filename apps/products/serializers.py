@@ -1,9 +1,19 @@
 from rest_framework import serializers
 
-from .models import Product
+from .models import Product, Variation
 
 
-class ProductSerializer(serializers.ModelSerializer):
+class VariationInventorySerializer(serializers.ModelSerializer):
+    inventory = serializers.IntegerField(source="inventory.quantity")
+
+    class Meta:
+        model = Variation
+        fields = ["id", "name", "inventory"]
+
+
+class ProductInventorySerializer(serializers.ModelSerializer):
+    variations = VariationInventorySerializer(many=True, read_only=True)
+
     class Meta:
         model = Product
-        fields = ["uuid", "name"]
+        fields = ["id", "name", "variations"]

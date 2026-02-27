@@ -5,12 +5,13 @@ from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
 
 from apps.inventory.models import Inventory, InventoryChange
-from apps.inventory.serializers import InventorySerializer
+from apps.products.models import Product
+from apps.products.serializers import ProductInventorySerializer
 
 
 class InventoryViewSet(GenericViewSet, ListModelMixin):
-    queryset = Inventory.objects.all()
-    serializer_class = InventorySerializer
+    queryset = Product.objects.all()
+    serializer_class = ProductInventorySerializer
 
     @action(methods=["post"], detail=False, url_path="change")
     def create_inventory_change(self, request):
@@ -20,7 +21,7 @@ class InventoryViewSet(GenericViewSet, ListModelMixin):
         for change in inventory_changes:
             change_objects.append(
                 InventoryChange(
-                    product_id=change.get("product_uuid"),
+                    product_variation_id=change.get("product_variation_id"),
                     change=change.get("change"),
                 )
             )

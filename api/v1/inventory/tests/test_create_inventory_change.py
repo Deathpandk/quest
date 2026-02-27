@@ -14,11 +14,11 @@ class TestCreateInventoryChange(AuthTokenTesting):
         response = self.create_inventory_change(
             [
                 {
-                    "product_uuid": str(self.inventory_1.product.uuid),
+                    "product_variation_id": str(self.inventory_1.product_variation.id),
                     "change": -10,
                 },
                 {
-                    "product_uuid": str(self.inventory_2.product.uuid),
+                    "product_variation_id": str(self.inventory_2.product_variation.id),
                     "change": 10,
                 },
             ]
