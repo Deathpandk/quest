@@ -3,6 +3,7 @@ Django>=6,<7
 djangorestframework>=3,<4
 django-environ<1
 djangorestframework-simplejwt<6
+pydantic<3
 
 # Linter
 black>=26,<27

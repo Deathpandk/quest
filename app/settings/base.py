@@ -100,3 +100,8 @@ TIME_ZONE = "America/Mexico_City"
 USE_I18N = True
 
 USE_TZ = True
+
+
+REST_FRAMEWORK = {
+    "EXCEPTION_HANDLER": "app.exception_handler.handler",
+}

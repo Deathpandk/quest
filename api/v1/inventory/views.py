@@ -8,6 +8,8 @@ from apps.inventory.models import Inventory, InventoryChange
 from apps.products.models import Product
 from apps.products.serializers import ProductInventorySerializer
 
+from .schemas import CreateInventoryChangeRequest
+
 
 class InventoryViewSet(GenericViewSet, ListModelMixin):
     queryset = Product.objects.filter(variations__inventory__isnull=False)
@@ -15,14 +17,14 @@ class InventoryViewSet(GenericViewSet, ListModelMixin):
 
     @action(methods=["post"], detail=False, url_path="change")
     def create_inventory_change(self, request):
-        inventory_changes = request.data
+        inventory_changes = [CreateInventoryChangeRequest(**item) for item in request.data]
 
         change_objects, updated_inventories = [], []
         for change in inventory_changes:
             change_objects.append(
                 InventoryChange(
-                    product_variation_id=change.get("product_variation_id"),
-                    change=change.get("change"),
+                    product_variation_id=change.product_variation_id,
+                    change=change.change,
                 )
             )
 
