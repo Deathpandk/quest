@@ -10,4 +10,4 @@ if env == "local":
 if env == "prod":
     from .prod import *
 if env == "test":
-    from .base import *
+    from .test import *

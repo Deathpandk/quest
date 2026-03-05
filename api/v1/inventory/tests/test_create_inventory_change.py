@@ -11,7 +11,7 @@ class TestCreateInventoryChange(AuthTokenTesting):
         return self.post("/api/v1/inventory/change/", data, expected_status)
 
     def test_list_inventory(self):
-        response = self.create_inventory_change(
+        self.create_inventory_change(
             [
                 {
                     "product_variation_id": str(self.inventory_1.product_variation.id),
