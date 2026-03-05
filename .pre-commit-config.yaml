@@ -22,4 +22,4 @@ repos:
     rev: v2.3.3
     hooks:
     -   id: autoflake
-        exclude: ^(settings/|htmlcov/)
+        exclude: ^(app/settings/|htmlcov/)
