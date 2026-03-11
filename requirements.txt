@@ -22,4 +22,3 @@ gunicorn
 psycopg2-binary
 django-storages
 boto3
-dj-database-url
