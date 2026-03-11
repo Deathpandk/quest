@@ -2,6 +2,9 @@ install:
 	pip install -r requirements.txt
 	pre-commit install
 
+install-prod:
+	pip install -r requirements.prod.txt
+
 format:
 	isort .
 	black .
