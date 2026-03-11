@@ -16,3 +16,9 @@ pre-commit<4
 #Testing
 factory-boy>3,<4
 coverage>7,<8
+
+# Production
+gunicorn
+psycopg2-binary
+django-storages
+boto3

@@ -1,6 +1,0 @@
--r requirements.txt
-# Production
-gunicorn
-psycopg2-binary
-django-storages
-boto3
