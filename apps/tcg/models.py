@@ -65,12 +65,19 @@ class ExpansionProduct(NameModel, UUIDModel):
 
 
 class TCGProduct(NameModel, UUIDModel):
-    game = models.ForeignKey("tcg.Game", on_delete=models.PROTECT, related_name="products")
-    expansion_product = models.ForeignKey(
-        "tcg.ExpansionProduct", on_delete=models.PROTECT, related_name="products"
+    expansion_product = models.OneToOneField(
+        "tcg.ExpansionProduct", on_delete=models.PROTECT, related_name="tcgproduct"
     )
-    version = models.ForeignKey("tcg.Version", on_delete=models.PROTECT)
-
     product = models.OneToOneField(
         "products.Product", on_delete=models.PROTECT, related_name="tcgproduct"
+    )
+
+
+class TCGVariation(NameModel, UUIDModel):
+    tcg_product = models.ForeignKey(
+        "tcg.TCGProduct", on_delete=models.PROTECT, related_name="variations"
+    )
+    version = models.ForeignKey("tcg.Version", on_delete=models.PROTECT)
+    variation = models.OneToOneField(
+        "products.Variation", on_delete=models.PROTECT, related_name="tcgproduct"
     )
