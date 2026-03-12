@@ -95,9 +95,6 @@ def update_game_products(game_id):
             if not new:
                 for key, value in defaults.items():
                     setattr(card, key, value)
-                if card.image_file is None:
-                    card.default_small_image_url = card_image_url
-                    card.image_default_url = card_image_url
                 card.save()
 
             card_instances[str(card.tcgcsv_id)] = card

@@ -5,7 +5,7 @@ from .models import Product, Variation
 
 @admin.register(Product)
 class Admin(admin.ModelAdmin):
-    list_display = ["id", "name"]
+    list_display = ["id", "name", "order"]
 
 
 @admin.register(Variation)

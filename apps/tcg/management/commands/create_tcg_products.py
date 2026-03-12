@@ -22,11 +22,13 @@ class Command(BaseCommand):
 
             keywords = f"EXP:{item.expansion.name}"
             product_name = f"{item.expansion.name} - {item.name}"
+            product_order = item.number
 
             if hasattr(item, "tcgproduct"):
                 tcg_product = item.tcgproduct
                 product = tcg_product.product
-                if product.name != product_name:
+                if product.name != product_name or product.order != product_order:
+                    product.order = product_order
                     product.name = product_name
                     product.save()
             else:
