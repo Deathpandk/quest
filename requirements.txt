@@ -7,6 +7,12 @@ pydantic<3
 django-filter<26
 django-cors-headers<5
 
+# Services
+requests
+
+# Utils
+pygments
+
 # Linter
 black>=26,<27
 isort>=8,<9
