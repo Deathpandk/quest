@@ -64,7 +64,7 @@ class ExpansionProduct(NameModel, UUIDModel):
         ordering = ["type_of", "game", "expansion", "number"]
 
 
-class TCGProduct(NameModel, UUIDModel):
+class TCGProduct(UUIDModel):
     expansion_product = models.OneToOneField(
         "tcg.ExpansionProduct", on_delete=models.PROTECT, related_name="tcgproduct"
     )
@@ -73,7 +73,7 @@ class TCGProduct(NameModel, UUIDModel):
     )
 
 
-class TCGVariation(NameModel, UUIDModel):
+class TCGVariation(UUIDModel):
     tcg_product = models.ForeignKey(
         "tcg.TCGProduct", on_delete=models.PROTECT, related_name="variations"
     )

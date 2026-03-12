@@ -26,17 +26,18 @@ class Command(BaseCommand):
             if hasattr(item, "tcgproduct"):
                 tcg_product = item.tcgproduct
                 product = tcg_product.product
+                if product.name != product_name:
+                    product.name = product_name
+                    product.save()
             else:
-                product = Product(
-                    name=item.name,
+                product = Product.objects.create(
+                    name=product_name,
                     keywords=keywords,
                 )
                 tcg_product = TCGProduct.objects.create(
                     expansion_product=item,
                     product=product,
                 )
-            product.name = product_name
-            product.save()
 
             for version in item.versions.all():
 
@@ -45,8 +46,11 @@ class Command(BaseCommand):
                 tcg_variation = tcg_product.variations.filter(version=version).first()
                 if tcg_variation:
                     variation = tcg_variation.variation
+                    if variation.name != variation_name:
+                        variation.name = variation_name
+                        variation.save()
                 else:
-                    variation = Variation(
+                    variation = Variation.objects.create(
                         product=product,
                         name=version.name,
                     )
@@ -55,5 +59,3 @@ class Command(BaseCommand):
                         version=version,
                         variation=variation,
                     )
-                variation.name = variation_name
-                variation.save()
