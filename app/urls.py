@@ -9,9 +9,9 @@ urlpatterns = [
     path("api/", include("api.urls")),
 ]
 
-
+if settings.ENV != "test":
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 if settings.ENV == "local":
     urlpatterns.append(path("", TemplateView.as_view(template_name="home.html")))
     urlpatterns += static(settings.COV_URL, document_root=settings.COV_ROOT)
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
