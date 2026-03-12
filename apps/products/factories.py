@@ -6,6 +6,7 @@ class ProductFactory(factory.django.DjangoModelFactory):
         model = "products.Product"
 
     name = factory.Sequence(lambda n: f"Product {n + 1}")
+    order = 1
 
 
 class VariationFactory(factory.django.DjangoModelFactory):

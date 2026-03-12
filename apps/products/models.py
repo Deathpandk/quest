@@ -6,9 +6,10 @@ from app.utils.models import NameModel, TimeStampedModel, UUIDModel
 class Product(NameModel, UUIDModel, TimeStampedModel):
     name = models.CharField(max_length=256)
     keywords = models.TextField(null=True, blank=True)
+    order = models.IntegerField(null=True, blank=True)
 
     class Meta:
-        ordering = ["name"]
+        ordering = ["order", "name"]
 
 
 class Variation(NameModel, UUIDModel, TimeStampedModel):
