@@ -4,7 +4,7 @@ from app.utils.models import NameModel, TimeStampedModel, UUIDModel
 
 
 class Product(NameModel, UUIDModel, TimeStampedModel):
-    name = models.CharField(max_length=128)
+    name = models.CharField(max_length=256)
     keywords = models.TextField(null=True, blank=True)
 
     class Meta:
@@ -15,7 +15,7 @@ class Variation(NameModel, UUIDModel, TimeStampedModel):
     product = models.ForeignKey(
         "products.Product", on_delete=models.CASCADE, related_name="variations"
     )
-    name = models.CharField(max_length=128)
+    name = models.CharField(max_length=256)
 
     class Meta:
         ordering = ["name"]
