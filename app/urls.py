@@ -10,7 +10,7 @@ urlpatterns = [
 ]
 
 
-if settings.env != "prod":
+if settings.ENV != "prod":
     urlpatterns.append(path("", TemplateView.as_view(template_name="home.html")))
     urlpatterns += static(settings.COV_URL, document_root=settings.COV_ROOT)
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

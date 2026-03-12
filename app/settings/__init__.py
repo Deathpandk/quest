@@ -3,11 +3,11 @@ import environ
 env = environ.Env()
 environ.Env.read_env()
 
-env = env("ENV")
+ENV = env("ENV")
 
-if env == "local":
+if ENV == "local":
     from .local import *
-if env == "prod":
+if ENV == "prod":
     from .prod import *
-if env == "test":
+if ENV == "test":
     from .test import *
