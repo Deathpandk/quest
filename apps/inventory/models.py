@@ -17,5 +17,8 @@ class InventoryChange(UUIDModel, TimeStampedModel):
     change = models.IntegerField()
 
     def apply(self):
-        self.product_variation.inventory.quantity += self.change
+        if hasattr(self.product_variation, "inventory"):
+            self.product_variation.inventory.quantity += self.change
+        else:
+            Inventory.objects.create(product_variation=self.product_variation, quantity=self.change)
         return self.product_variation.inventory

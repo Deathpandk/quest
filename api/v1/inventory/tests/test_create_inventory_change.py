@@ -1,5 +1,6 @@
 from app.utils.auth_token_testing import AuthTokenTesting
 from apps.inventory.factories import InventoryFactory
+from apps.products.factories import VariationFactory
 
 
 class TestCreateInventoryChange(AuthTokenTesting):
@@ -10,7 +11,7 @@ class TestCreateInventoryChange(AuthTokenTesting):
     def create_inventory_change(self, data, expected_status=201):
         return self.post("/api/v1/inventory/change/", data, expected_status)
 
-    def test_list_inventory(self):
+    def test_create_inventory_change(self):
         self.create_inventory_change(
             [
                 {
@@ -26,6 +27,27 @@ class TestCreateInventoryChange(AuthTokenTesting):
 
         self.inventory_1.refresh_from_db()
         self.assertEqual(self.inventory_1.quantity, -10)
+
+        self.inventory_2.refresh_from_db()
+        self.assertEqual(self.inventory_2.quantity, 10)
+
+    def test_create_inventory_change_with_no_inventory(self):
+        variation = VariationFactory()
+        self.create_inventory_change(
+            [
+                {
+                    "product_variation_id": str(variation.id),
+                    "change": -10,
+                },
+                {
+                    "product_variation_id": str(self.inventory_2.product_variation.id),
+                    "change": 10,
+                },
+            ]
+        )
+
+        self.inventory_1.refresh_from_db()
+        self.assertEqual(variation.inventory.quantity, -10)
 
         self.inventory_2.refresh_from_db()
         self.assertEqual(self.inventory_2.quantity, 10)
