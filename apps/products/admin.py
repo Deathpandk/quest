@@ -11,3 +11,4 @@ class Admin(admin.ModelAdmin):
 @admin.register(Variation)
 class Admin(admin.ModelAdmin):
     list_display = ["id", "product", "name"]
+    readonly_fields = ["product"]

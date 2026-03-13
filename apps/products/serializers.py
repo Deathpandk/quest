@@ -8,7 +8,7 @@ class VariationInventorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Variation
-        fields = ["id", "name", "inventory"]
+        fields = ["id", "name", "price", "inventory"]
 
 
 class ProductInventorySerializer(serializers.ModelSerializer):
@@ -23,7 +23,8 @@ class VariationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Variation
-        fields = ["id", "name"]
+        fields = ["id", "name", "price"]
+        read_only_fields = ["id"]
 
 
 class ProductSerializer(serializers.ModelSerializer):

@@ -1,10 +1,10 @@
-from rest_framework.mixins import ListModelMixin
+from rest_framework.mixins import ListModelMixin, UpdateModelMixin
 from rest_framework.viewsets import GenericViewSet
 
 from app.utils.pagination import DefaultPagination
 from apps.products.filters import ProductFilterSet
-from apps.products.models import Product
-from apps.products.serializers import ProductSerializer
+from apps.products.models import Product, Variation
+from apps.products.serializers import ProductSerializer, VariationSerializer
 
 
 class ProductViewSet(GenericViewSet, ListModelMixin):
@@ -13,3 +13,8 @@ class ProductViewSet(GenericViewSet, ListModelMixin):
     serializer_class = ProductSerializer
     search_fields = ["name"]
     filterset_class = ProductFilterSet
+
+
+class VariationViewSet(GenericViewSet, UpdateModelMixin):
+    queryset = Variation.objects.all()
+    serializer_class = VariationSerializer

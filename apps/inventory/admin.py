@@ -6,6 +6,7 @@ from .models import Inventory, InventoryChange
 @admin.register(Inventory)
 class Admin(admin.ModelAdmin):
     list_display = ["product_variation__product", "product_variation", "quantity"]
+    readonly_fields = ["product_variation", "quantity"]
 
 
 @admin.register(InventoryChange)
