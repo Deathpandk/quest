@@ -27,7 +27,13 @@ class Command(BaseCommand):
             if hasattr(item, "tcgproduct"):
                 tcg_product = item.tcgproduct
                 product = tcg_product.product
-                if product.name != product_name or product.order != product_order:
+                if any(
+                    [
+                        product.name != product_name,
+                        product.order != product_order,
+                        product.keywords != keywords,
+                    ]
+                ):
                     product.order = product_order
                     product.name = product_name
                     product.save()
