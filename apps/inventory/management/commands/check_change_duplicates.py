@@ -7,13 +7,25 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
 
+        total_count = 0
         for item in Inventory.objects.all():
             changes = InventoryChange.objects.filter(product_variation=item.product_variation)
+
             if len(changes) == 1:
                 continue
 
+            reference = changes.first().change
+            abort = False
+            for c in changes:
+                if c.change != reference:
+                    abort = True
+
+            if abort:
+                continue
+
+            print("=" * 20)
             print("product variation: ", item.product_variation)
             print("changes", len(changes))
+            print("quantity: ", reference)
 
-            for c in changes:
-                print(c.created_at, c.change)
+        print("Items totales: ", total_count)
