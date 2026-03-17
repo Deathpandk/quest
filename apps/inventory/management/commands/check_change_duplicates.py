@@ -6,7 +6,7 @@ from apps.inventory.models import Inventory, InventoryChange
 class Command(BaseCommand):
 
     def handle(self, *args, **options):
-
+        items_count = 0
         print("=" * 20)
         for item in Inventory.objects.all():
             changes = InventoryChange.objects.filter(product_variation=item.product_variation)
@@ -22,6 +22,11 @@ class Command(BaseCommand):
 
             if abort:
                 continue
+
+            items_count += 1
+            if items_count > 100:
+                print("changed 100 items")
+                break
 
             for index, c in enumerate(changes):
                 if index != 0:
