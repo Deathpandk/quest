@@ -12,3 +12,4 @@ class Admin(admin.ModelAdmin):
 @admin.register(InventoryChange)
 class Admin(admin.ModelAdmin):
     list_display = ["product_variation__product", "product_variation", "change"]
+    readonly_fields = ["product_variation", "change"]
