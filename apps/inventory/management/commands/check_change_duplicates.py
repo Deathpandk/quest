@@ -23,6 +23,7 @@ class Command(BaseCommand):
             if abort:
                 continue
 
+            total_count += 1
             print("=" * 20)
             print("product variation: ", item.product_variation)
             print("changes", len(changes))
